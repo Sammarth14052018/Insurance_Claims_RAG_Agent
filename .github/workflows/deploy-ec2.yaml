@@ -130,9 +130,9 @@ jobs:
           cd "$APP_DIR"
 
           if [ ! -f .env ]; then
-            echo "ERROR: .env missing in $APP_DIR"
-            echo "Create it once on server or set EC2_ENV_FILE secret."
-            exit 1
+            echo "WARN: .env missing in $APP_DIR; creating an empty .env file."
+            echo "Set EC2_ENV_FILE (or create .env on server) to provide secrets/config."
+            touch .env
           fi
 
           if ! command -v docker >/dev/null 2>&1; then
